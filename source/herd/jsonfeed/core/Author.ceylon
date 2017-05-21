@@ -2,7 +2,7 @@ import ceylon.uri { Uri }
 
 "Specifies the feed author. The author object has several members. These are all
  optional — but if you provide an author object, then at least one is required."
-shared class JsonAuthor(name, url, avatar) {
+shared class Author(name, url, avatar) {
 
     "The author’s name."
     shared String? name;

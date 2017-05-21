@@ -1,6 +1,7 @@
 import ceylon.uri { Uri }
+import ceylon.json { JsonObject, JsonArray }
 
-shared class JsonFeed(
+shared class Feed(
         version, title, homePageUrl, feedUrl, description, userComment, nextUrl, icon,
         favicon, author, expired, items) {
 
@@ -52,7 +53,7 @@ shared class JsonFeed(
     shared Uri? favicon;
 
     "Specifies the feed author."
-    shared JsonAuthor? author;
+    shared Author? author;
 
     "Indicates whether or not the feed is finished — that is, whether or not it will ever
      update again. A feed for a temporary event, such as an instance of the Olympics,
@@ -63,5 +64,22 @@ shared class JsonFeed(
     // TODO hubs
 
     "Feed items."
-    shared [JsonItem*] items;
+    shared [Item*] items;
+
+    shared JsonObject json
+        =>  JsonObject {
+                {   "version" -> version,
+                    "title" -> title,
+                    "home_page_url" -> homePageUrl?.string,
+                    "feed_url" -> feedUrl?.string,
+                    "description" -> description,
+                    "user_comment" -> userComment,
+                    "next_url" -> nextUrl?.string,
+                    "icon" -> icon?.string,
+                    "favicon" -> favicon?.string,
+                    // "author" -> author?.json,
+                    "expired" -> expired?.string,
+                    "items" -> JsonArray { for (item in items) item.json }
+                }.filter((entry) => entry.item exists);
+            };
 }

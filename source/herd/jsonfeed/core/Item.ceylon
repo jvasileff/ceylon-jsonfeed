@@ -1,7 +1,8 @@
 import ceylon.uri { Uri }
 import ceylon.time.timezone { ZoneDateTime }
+import ceylon.json { JsonObject }
 
-shared class JsonItem(
+shared class Item(
         id, url, externalUrl, title, contentHtml, contentText, summary, image,
         bannerImage, datePublished, dateModified, author, tags, attachments) {
 
@@ -64,7 +65,7 @@ shared class JsonItem(
 
     "`author` has the same structure as the top-level author. If not specified in an item,
      then the top-level author, if present, is the author of the item."
-    shared JsonAuthor? author;
+    shared Author? author;
 
     "`tags` can have any plain text values you want. Tags tend to be just one word, but
      they may be anything. Note: they are not the equivalent of Twitter hashtags. Some
@@ -72,8 +73,26 @@ shared class JsonItem(
     shared [String*] tags;
 
     "An individual item may have one or more attachments."
-    shared [JsonAttachment*] attachments;
+    shared [Attachment*] attachments;
 
-    "One of 'contentHtml' or 'contentText' must not be null."
+    "One of 'content_html' or 'content_text' must not be null."
     assert (contentHtml exists || contentText exists);
+
+    shared JsonObject json
+        =>  JsonObject {
+                {   "id" -> id,
+                    "url" -> url?.string,
+                    "external_url" -> externalUrl?.string,
+                    "title" -> title,
+                    "content_html" -> contentHtml,
+                    "content_text" -> contentText,
+                    "image" -> image?.string,
+                    "banner_image" -> bannerImage?.string,
+                    "date_published" -> datePublished?.string,
+                    "date_modified" -> dateModified?.string
+                    // "author" -> author,
+                    // "tags" -> tags
+                    // "attachments" -> attachments
+                }.filter((entry) => entry.item exists);
+            };
 }

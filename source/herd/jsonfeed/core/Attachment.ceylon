@@ -1,6 +1,6 @@
 import ceylon.uri { Uri }
 
-shared class JsonAttachment(url, mimeType, title, sizeInBytes, durationInSeconds) {
+shared class Attachment(url, mimeType, title, sizeInBytes, durationInSeconds) {
 
     "The location of the attachment."
     shared Uri url;
