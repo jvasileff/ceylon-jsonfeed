@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Hello from Ceylon!</title>
+    </head>
+    <body>
+        <div>
+            <select id="feedSelection">
+                <option value="">Select Feed</option>
+                <option value="http://shapeof.com/feed.json">The Shape of Everything</option>
+                <option value="http://flyingmeat.com/blog/feed.json">News from Flying Meat</option>
+                <option value="http://maybepizza.com/feed.json">Maybe Pizza?</option>
+                <option value="https://daringfireball.net/feeds/json">Daring Fireball</option>
+                <option value="http://hypercritical.co/feeds/main.json">Hypercritical</option>
+                <option value="http://inessential.com/feed.json">inessential.com</option>
+                <option value="https://manton.org/feed/json">Manton Reece</option>
+                <option value="https://micro.blog/feeds/manton.json">Micro.blog - manton timeline</option>
+                <!--<option value="http://timetable.manton.org/feed.json"></option>-->
+                <option value="http://therecord.co/feed.json">The Record</option>
+                <option value="http://www.allenpike.com/feed.json">Allen Pike</option>
+                <option value="https://jsonfeed.org/feed.json">JSON Feed</option>
+            </select>
+        </div>
+        <div id="container"><br><b>Please select a feed from the dropdown above.</b></div>
+        <script src="http://requirejs.org/docs/release/2.1.22/minified/require.js"></script>
+        <script type="text/javascript">
+        require.config({
+            baseUrl : 'modules'
+        });
+        require(
+                [ 'herd/jsonfeed/jsSample/0.0.0/herd.jsonfeed.jsSample-0.0.0' ],
+                function(app) {
+                    app.run();
+                }
+        );
+        </script>
+    </body>
+</html>
+
