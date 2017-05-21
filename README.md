@@ -10,8 +10,10 @@ Source code for the following Ceylon modules is available in this repository:
 - `herd.jsonfeed.jsSample`: A small sample web program for the JavaScript
   backend
 
-**Try the live demo!** Visit <https://jvasileff.github.io/ceylon-jsonfeed/>
-to see a (very) simple JSON Feed reader that was built using this module.
+## Try the live demo!
+
+Visit <https://jvasileff.github.io/ceylon-jsonfeed/> to see a (very) simple
+JSON Feed reader that was built using this module.
 
 ## Building the Modules
 
