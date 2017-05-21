@@ -40,22 +40,28 @@ run.$crtmm$=function(){return{mod:$CCMM$,$t:{t:m$1.Anything},ps:[],pa:1,d:['herd
 function processFeed($2x){
 var $2y;
 m$1.asrt$((m$1.is$(($2y=m$3.parse($2x)),{t:m$3.JsonObject})),"Assertion failed: "+"\n\tviolated is JsonObject jsonObject = parseJson(json)\n\tat run.ceylon (20:11-20:54)",'20:4-20:55','run.ceylon');
-var $2z=m$6.parseFeed($2y);
+var $2z;
+if(m$1.nn$($2y.getObjectOrNull("query"))){
+$2z=m$6.parseFeed($2y.getObject("query").getObject("results").getObject("json"));
+}
+else{
+$2z=m$6.parseFeed($2y);
+}
 setInnerHtml("container",feedToHtml($2z).string);
 };processFeed.$crtmm$=function(){return{mod:$CCMM$,$t:{t:m$1.Anything},ps:[{nm:'json',mt:'prm',$t:{t:m$1.$_String}}],d:['herd.jsonfeed.jsSample','processFeed']};};
 function processUrlContent($30,$31){
-var $32=($33=(typeof XMLHttpRequest==='undefined'?m$1.throwexc(m$1.Exception("Undefined type XMLHttpRequest"),'27:22-27:35','run.ceylon'):XMLHttpRequest),$33.$$===undefined?new $33():$33());
+var $32=($33=(typeof XMLHttpRequest==='undefined'?m$1.throwexc(m$1.Exception("Undefined type XMLHttpRequest"),'35:22-35:35','run.ceylon'):XMLHttpRequest),$33.$$===undefined?new $33():$33());
 $32.open("GET",$30);
-$32.onload=m$1.jsc$2((function($34){return $31(m$1.ndtc$($32.responseText,{t:m$1.$_String},'run.ceylon 29:48-29:63'));
+$32.onload=m$1.jsc$2((function($34){return $31(m$1.ndtc$($32.responseText,{t:m$1.$_String},'run.ceylon 37:48-37:63'));
 })/*TODO: callable targs 6.2*/);
 $32.send();
 };processUrlContent.$crtmm$=function(){return{mod:$CCMM$,$t:{t:m$1.Anything},ps:[{nm:'url',mt:'prm',$t:{t:m$1.$_String}},{nm:'consume',mt:'prm',$pt:'f',$t:{t:m$1.Callable,a:{Arguments$Callable:{t:'T',l:[{t:m$1.$_String}]},Return$Callable:{t:m$1.Anything}}},$rt:{t:m$1.Anything},ps:[{nm:'s',mt:'prm',$t:{t:m$1.$_String}}]}],d:['herd.jsonfeed.jsSample','processUrlContent']};};
 function setInnerHtml($35,$36){
-var $37=(typeof document==='undefined'||document===null?m$1.throwexc(m$1.Exception("Undefined or null reference: document"),'36:26-36:33','run.ceylon'):document).getElementById($35);
+var $37=(typeof document==='undefined'||document===null?m$1.throwexc(m$1.Exception("Undefined or null reference: document"),'44:26-44:33','run.ceylon'):document).getElementById($35);
 $37.innerHTML=$36;
 };setInnerHtml.$crtmm$=function(){return{mod:$CCMM$,$t:{t:m$1.Anything},ps:[{nm:'id',mt:'prm',$t:{t:m$1.$_String}},{nm:'html',mt:'prm',$t:{t:m$1.$_String}}],d:['herd.jsonfeed.jsSample','setInnerHtml']};};
 function attachOnChange($38,$39){
-var $3a=(typeof document==='undefined'||document===null?m$1.throwexc(m$1.Exception("Undefined or null reference: document"),'43:26-43:33','run.ceylon'):document).getElementById($38);
+var $3a=(typeof document==='undefined'||document===null?m$1.throwexc(m$1.Exception("Undefined or null reference: document"),'51:26-51:33','run.ceylon'):document).getElementById($38);
 $3a.onchange=$39;
 };attachOnChange.$crtmm$=function(){return{mod:$CCMM$,$t:{t:m$1.Anything},ps:[{nm:'id',mt:'prm',$t:{t:m$1.$_String}},{nm:'consume',mt:'prm',$pt:'f',$t:{t:m$1.Callable,a:{Arguments$Callable:{t:'T',l:[{t:m$1.Anything}]},Return$Callable:{t:m$1.Anything}}},$rt:{t:m$1.Anything},ps:[{nm:'event',mt:'prm',$t:{t:m$1.Anything}}]}],d:['herd.jsonfeed.jsSample','attachOnChange']};};
 function feedToHtml($3b){return ($3c=m$1.sarg$(function($3d){switch($3d){case 0:return ($3e=m$1.sarg$(function($3f){switch($3f){case 0:return "Recent articles published on ";case 1:return ($3g=$3b.homePageUrl,$3h=($3i=m$1.sarg$(function($3j){switch($3j){case 0:return $3b.title;}return m$1.finished();},undefined,{Element$Iterable:{t:m$1.$_String},Absent$Iterable:{t:m$1.Nothing}}),m$5.Em(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,$3i)),$_anchor($3g,$3h));case 2:return ":";}return m$1.finished();},undefined,{}),m$5.H3(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,$3e));case 1:return m$1.for$(function(){
