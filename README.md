@@ -1,13 +1,17 @@
 # JSON Feed for Ceylon
 
 JSON Feed for Ceylon provides domain objects and a parser for [JSON
-Feed](https://jsonfeed.org). Source code for the following Ceylon modules is
-available in this repository:
+Feed](https://jsonfeed.org).
+
+Source code for the following Ceylon modules is available in this repository:
 
 - `herd.jsonfeed.core`: The parser and domain objects
 - `herd.jsonfeed.jvmSample`: A small sample CLI program for the Java backend
 - `herd.jsonfeed.jsSample`: A small sample web program for the JavaScript
   backend
+
+**Try the live demo!** Visit <https://jvasileff.github.io/ceylon-jsonfeed/>
+to see a (very) simple JSON Feed reader that was built using this module.
 
 ## Building the Modules
 
