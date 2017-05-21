@@ -18,7 +18,18 @@ shared void run() {
 
 void processFeed(String json) {
     assert (is JsonObject jsonObject = parseJson(json));
-    value feed = parseFeed(jsonObject);
+    Feed feed;
+    if (jsonObject.getObjectOrNull("query") exists) {
+        // support YQL (https://developer.yahoo.com/yql/) results
+        // see https://developer.yahoo.com/yql/guide/response.html#json-to-json
+        // it's important that JQL urls include "jsonCompat=new" for lossless
+        // JSON-to-JSON Transformation
+        feed = parseFeed(
+            jsonObject.getObject("query").getObject("results").getObject("json")
+        );
+    } else {
+        feed = parseFeed(jsonObject);
+    }
     setInnerHtml("container", feedToHtml(feed).string);
 }
 
