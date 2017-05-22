@@ -44,7 +44,7 @@ String:
 
 ```ceylon
 import ceylon.json { JsonObject, parseJson = parse }
-import herd.jsonfeed.core { parseFeed }
+import herd.jsonfeed.core { Feed, parseFeed }
 
 shared void run() {
     String rawJson = ...;
