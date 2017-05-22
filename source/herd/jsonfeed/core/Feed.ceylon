@@ -77,7 +77,7 @@ shared class Feed(
                     "next_url" -> nextUrl?.string,
                     "icon" -> icon?.string,
                     "favicon" -> favicon?.string,
-                    // "author" -> author?.json,
+                    "author" -> author?.json,
                     "expired" -> expired?.string,
                     "items" -> JsonArray { for (item in items) item.json }
                 }.filter((entry) => entry.item exists);

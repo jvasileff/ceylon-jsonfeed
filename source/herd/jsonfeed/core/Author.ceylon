@@ -1,4 +1,5 @@
 import ceylon.uri { Uri }
+import ceylon.json { JsonObject }
 
 "Specifies the feed author. The author object has several members. These are all
  optional — but if you provide an author object, then at least one is required."
@@ -20,4 +21,12 @@ shared class Author(name, url, avatar) {
 
     "One of 'name', 'url', or 'avatar' must not be null."
     assert (name exists || url exists || avatar exists);
+
+    shared JsonObject json
+        =>  JsonObject {
+                {   "name" -> name,
+                    "url" -> url?.string,
+                    "avatar" -> avatar?.string
+                }.filter((entry) => entry.item exists);
+            };
 }

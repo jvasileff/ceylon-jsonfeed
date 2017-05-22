@@ -10,7 +10,7 @@ shared Feed parseFeed(JsonObject json)
             homePageUrl = parseFeedUri(json.getStringOrNull("home_page_url"));
             feedUrl = parseFeedUri(json.getStringOrNull("feed_url"));
             description = json.getStringOrNull("description");
-            userComment = json.getStringOrNull("userComment");
+            userComment = json.getStringOrNull("user_comment");
             nextUrl = parseFeedUri(json.getStringOrNull("next_url"));
             icon = parseFeedUri(json.getStringOrNull("icon"));
             favicon = parseFeedUri(json.getStringOrNull("favicon"));

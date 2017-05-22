@@ -1,6 +1,6 @@
 import ceylon.uri { Uri }
 import ceylon.time.timezone { ZoneDateTime }
-import ceylon.json { JsonObject }
+import ceylon.json { JsonObject, JsonArray }
 
 shared class Item(
         id, url, externalUrl, title, contentHtml, contentText, summary, image,
@@ -89,10 +89,11 @@ shared class Item(
                     "image" -> image?.string,
                     "banner_image" -> bannerImage?.string,
                     "date_published" -> datePublished?.string,
-                    "date_modified" -> dateModified?.string
-                    // "author" -> author,
-                    // "tags" -> tags
-                    // "attachments" -> attachments
+                    "date_modified" -> dateModified?.string,
+                    "author" -> author?.json,
+                    "tags" -> (if (tags.empty) then null else JsonArray(tags)),
+                    "attachments" -> (if (attachments.empty) then null else
+                                      JsonArray(attachments.map(Attachment.json)))
                 }.filter((entry) => entry.item exists);
             };
 }

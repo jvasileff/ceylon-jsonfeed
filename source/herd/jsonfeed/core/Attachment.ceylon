@@ -1,4 +1,5 @@
 import ceylon.uri { Uri }
+import ceylon.json { JsonObject }
 
 shared class Attachment(url, mimeType, title, sizeInBytes, durationInSeconds) {
 
@@ -19,4 +20,14 @@ shared class Attachment(url, mimeType, title, sizeInBytes, durationInSeconds) {
 
     "Specifies how long the attachment takes to listen to or watch."
     shared Integer? durationInSeconds;
+
+    shared JsonObject json
+        =>  JsonObject {
+                {   "url" -> url.string,
+                    "mimeType" -> mimeType,
+                    "title" -> title,
+                    "size_in_bytes" -> sizeInBytes,
+                    "duration_in_seconds" -> durationInSeconds
+                }.filter((entry) => entry.item exists);
+            };
 }
