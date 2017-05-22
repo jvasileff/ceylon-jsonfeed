@@ -2,6 +2,8 @@ import ceylon.uri { Uri }
 import ceylon.time.timezone { ZoneDateTime }
 import ceylon.json { JsonObject, JsonArray }
 
+"An `Item`, as described in the
+ [JSON Feed Verson 1 Specification](https://jsonfeed.org/version/1)."
 shared class Item(
         id, url, externalUrl, title, contentHtml, contentText, summary, image,
         bannerImage, datePublished, dateModified, author, tags, attachments) {
@@ -78,6 +80,7 @@ shared class Item(
     "One of 'content_html' or 'content_text' must not be null."
     assert (contentHtml exists || contentText exists);
 
+    "This item as a `JsonObject`"
     shared JsonObject json
         =>  JsonObject {
                 {   "id" -> id,

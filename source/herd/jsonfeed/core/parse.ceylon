@@ -3,6 +3,7 @@ import ceylon.time.iso8601 { parseZoneDateTime }
 import ceylon.time.timezone { ZoneDateTime }
 import ceylon.uri { parseUri = parse, Uri }
 
+"Produce a [[Feed]] from the given [[json]] object."
 shared Feed parseFeed(JsonObject json)
     =>  Feed {
             version = json.getString("version");
@@ -23,6 +24,8 @@ shared Feed parseFeed(JsonObject json)
             ];
         };
 
+"Produce an [[Author]] from the given [[json]] object, or return null \
+ if [[json]] is null."
 shared Author? parseAuthor(JsonObject? json) {
     if (exists json) {
         return Author {
@@ -34,6 +37,7 @@ shared Author? parseAuthor(JsonObject? json) {
     return null;
 }
 
+"Produce an [[Item]] from the given [[json]] object."
 shared Item parseItem(JsonObject json)
     =>  Item {
             id = json.getString("id");
@@ -59,6 +63,7 @@ shared Item parseItem(JsonObject json)
             });
         };
 
+"Produce an [[Attachment]] from the given [[json]] object."
 shared Attachment parseAttachment(JsonObject json)
     =>  Attachment {
             url = parseFeedUri(json.getString("url"));

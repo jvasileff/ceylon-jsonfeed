@@ -1,6 +1,8 @@
 import ceylon.uri { Uri }
 import ceylon.json { JsonObject, JsonArray }
 
+"A `Feed`, as described in the
+ [JSON Feed Verson 1 Specification](https://jsonfeed.org/version/1)."
 shared class Feed(
         version, title, homePageUrl, feedUrl, description, userComment, nextUrl, icon,
         favicon, author, expired, items) {
@@ -66,6 +68,7 @@ shared class Feed(
     "Feed items."
     shared [Item*] items;
 
+    "This feed as a `JsonObject`"
     shared JsonObject json
         =>  JsonObject {
                 {   "version" -> version,

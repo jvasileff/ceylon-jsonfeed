@@ -1,6 +1,6 @@
 import ceylon.json { JsonObject, parseJson = parse }
 
-shared void run() {
+void run() {
     assert (is JsonObject json = parseJson(example));
     value feed = parseFeed(json);
     print("\nRecent articles published on ``feed.title``:\n");

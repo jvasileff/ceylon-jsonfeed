@@ -1,6 +1,10 @@
 import ceylon.uri { Uri }
 import ceylon.json { JsonObject }
 
+"An `Attachment`, as described in the
+ [JSON Feed Verson 1 Specification](https://jsonfeed.org/version/1).
+ 
+ An individual [[Item]] may have one or more attachments."
 shared class Attachment(url, mimeType, title, sizeInBytes, durationInSeconds) {
 
     "The location of the attachment."
@@ -21,6 +25,7 @@ shared class Attachment(url, mimeType, title, sizeInBytes, durationInSeconds) {
     "Specifies how long the attachment takes to listen to or watch."
     shared Integer? durationInSeconds;
 
+    "This attachment as a `JsonObject`"
     shared JsonObject json
         =>  JsonObject {
                 {   "url" -> url.string,
