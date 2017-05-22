@@ -15,19 +15,13 @@ shared Feed parseFeed(JsonObject json)
             icon = parseFeedUri(json.getStringOrNull("icon"));
             favicon = parseFeedUri(json.getStringOrNull("favicon"));
             author = parseAuthor(json.getObjectOrNull("author"));
-            expired = getBoolean(json.getStringOrNull("expired")); // FIXME
+            expired = json.getBooleanOrNull("expired");
             items = [
                 for (itemJson in json.getArray("items"))
                 if (is JsonObject itemJson)
                 parseItem(itemJson)
             ];
         };
-
-// FIXME REMOVE
-Boolean? getBoolean(String? string)
-    =>  if (exists string)
-        then string == "true"
-        else null;
 
 shared Author? parseAuthor(JsonObject? json) {
     if (exists json) {
